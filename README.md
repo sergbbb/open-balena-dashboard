@@ -1,4 +1,9 @@
-## Install OpenBalena + BalenaDashboard
+# OpenBalena Dashboard
+
+This is UI for OpenBalena project: https://www.balena.io/open/
+
+
+## Install OpenBalena + OpenBalena Dashboard
 
 #### OpenBalena supported devices: Raspberry Pi family, the Intel NUC, the NVIDIA Jetson TX2, and the balenaFin
 
