@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nginx:
+    restart: always
+  web:
+    restart: always
+    command: [ "npm", "run", "prod" ]
+    environment:
+      NODE_ENV: "production"

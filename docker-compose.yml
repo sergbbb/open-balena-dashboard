@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  nginx:
+    restart: unless-stopped
+    image: jwilder/nginx-proxy
+    container_name: balena-nginx
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+#      - /path/to/certs:/etc/nginx/certs
+    ports:
+      - 3000:80
+    environment:
+      DEFAULT_HOST: ${DASHBOARD_DOMAIN}
+    depends_on:
+      - web
+  web:
+    restart: unless-stopped
+    build:
+      context: .
+      args:
+        OPENBALENA_DOMAIN: ${OPENBALENA_DOMAIN}
+    image: balena-dashboard
+    command: [ "npm", "run", "dev" ]
+    volumes: [ "./api/:/app/api/", "./data/:/app/data/" ]
+    expose: [ "3000" ]
+    environment:
+      NODE_ENV: "development"
+      VIRTUAL_HOST: ${DASHBOARD_DOMAIN}
