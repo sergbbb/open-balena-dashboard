@@ -68,21 +68,6 @@ services:
 5. `balena deploy APPNAME --logs --source SOURCE_CODE_LOCATION --emulated --build`
 
 
-## UPDATE BalenaOS
-
-For example, assuming a Raspberry Pi 3 running balenaOS version v2.26.0 that should be upgraded to version v2.29.0, the first command to run (on a host OS shell) is:
-
-`hostapp-update -r -i resin/resinos:2.31.0_rev1-raspberrypi3`
-
-The names of host OS images (such as “resin/resinos:2.31.0_rev1-raspberrypi3”) can be found on the Docker Hub: https://hub.docker.com/r/resin/resinos/tags 14
-Please select the highest available image “revision”, e.g. ‘rev3’ in preference to ‘rev2’ or ‘rev1’.
-
-Then the balena supervisor needs to be updated as well. For example, the command to update the supervisor to version v9.9.0 (to be executed on a host OS shell) is:
-
-`update-resin-supervisor -t v9.9.0`
-
-Although the balena supervisor can be updated independently of balenaOS, we test selected versions of the supervisor with balenaOS releases, so it’s a good idea to use those supervisor versions. Search the meta-balena ChangeLog 10 for “supervisor” to find out the supervisor version that goes together with a balenaOS version.
-
 ## Amazon for registry storage
 in config/active:
 

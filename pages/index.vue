@@ -7,6 +7,7 @@
       <div class="col">
         <nuxt-link to="/application/create" class="btn btn-success">Create Application</nuxt-link>
         <nuxt-link to="/ssh_keys" class="btn btn-primary">SSH keys</nuxt-link>
+        <nuxt-link to="/misc" class="btn btn-primary">Misc docs</nuxt-link>
       </div>
     </div>
 
