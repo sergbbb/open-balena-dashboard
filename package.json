@@ -2,7 +2,7 @@
   "name": "balena-dashboard",
   "version": "1.0.0",
   "description": "Dashboard for OpenBalena",
-  "author": "Sergii Khoroshko &lt;khoroshko@gmail.com&gt;",
+  "author": "Serhii Khoroshko <khoroshko@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "nodemon --watch api --exec \"nuxt\"",
