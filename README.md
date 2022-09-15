@@ -45,13 +45,13 @@ services:
 2. Run with Docker Compose. For DEV: docker-compose up -d. For PROD: docker-compose -f docker-compose.yml -f docker-compose.production.yml up --build -d 
 
 
-## Deploy app code with balena-cli
+## Deploy app code with balena-cli (FROM https://www.balena.io/open/docs/getting-started/#Install-the-balena-CLI-on-the-local-machine)
 
 1. Install Docker, and balena-cli on the local machine : https://github.com/balena-io/balena-cli/releases
 2. Install self-signed certificates on the local machine : https://www.balena.io/open/docs/getting-started/#Install-self-signed-certificates-on-the-local-machine
 3. Add config file for balena-cli:
 
-        balenaUrl: "mydomain.com"
+        balenaUrl: "openbalena.mydomain.com"
         
     The CLI configuration file can be found at:
     
@@ -59,31 +59,30 @@ services:
     
     On Windows: %UserProfile%\_balenarc.yml
 4. Wrapping up the CLI installation, set an environment variable that points to the root certificate copied previously on the local machine. This step is to ensure the CLI can securely interact with the openBalena server.
-        
+
         bash	export NODE_EXTRA_CA_CERTS='/path/to/ca.crt'
         Windows cmd.exe	set NODE_EXTRA_CA_CERTS=C:\path\to\ca.crt
         Windows PowerShell	$Env:NODE_EXTRA_CA_CERTS="C:\path\to\ca.crt"
-4. `balena login` (with credentials)
-5. `balena deploy APPNAME --logs --source SOURCE_CODE_LOCATION --emulated --build`
+
+5. `balena login` (with credentials)
+6. `balena deploy APPNAME --logs --source SOURCE_CODE_LOCATION --emulated --build`
 
 
 ## Amazon for registry storage
 in config/active:
 
-
-`export OPENBALENA_S3_ACCESS_KEY=aws_access_key
+```
+export OPENBALENA_S3_ACCESS_KEY=aws_access_key
 export OPENBALENA_S3_BUCKETS=my_s3_bucket_name
 export OPENBALENA_S3_ENDPOINT=https://s3.us-west-1.amazonaws.com
 export OPENBALENA_S3_REGION=us-west-2
-export OPENBALENA_S3_SECRET_KEY=aws_secret_key`
+export OPENBALENA_S3_SECRET_KEY=aws_secret_key
+```
 
 
-## SSH 
+## SSH access to boxes
 
-!! To access boxes via SSH, you need to add a public SSH key to the project immediately after creating the project.
-So that all newly created boxes have this key in their config !!
-
-The following describes how you can join the boxes:
+#### You can access boxes only from OpenBalena HOST server
 
 ### Way 1
 
@@ -98,12 +97,14 @@ This is just a quick guide on gaining SSH access to a host device with your open
 
 You are going to need a system tool called proxytunnel to do this, and I have only tested this on an Ubuntu system personally. I am assured that the process will work on macOS too, but how you get proxytunnel installed is outside the scope of this post.
 
+```
 $ sudo apt install proxytunnel
 $ proxytunnel -V
 proxytunnel 1.9.0 (rev 242) Copyright 2001-2008 Proxytunnel Project
 Then you should use the balena CLI tool to create an API key for your account:
 
 $ balena api-key generate proxytunnel
+
 
 Registered api key 'proxytunnel':
 
@@ -132,7 +133,7 @@ You are ready to go, to connect you will need the full UUID of the device, and y
 
 $ ssh root@<full UUID>.balena
 This will ask you to confirm the host identification and then drop you into a root prompt. If you’re on a production image, then the SSH keys on your machine will be used to identify you, so they must be setup on the device first, otherwise you will see a rejection due to not having a valid key.
-
+```
 
 ## Change logo on running devices
 
