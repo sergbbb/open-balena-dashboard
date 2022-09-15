@@ -2,15 +2,11 @@
 
 This is UI for OpenBalena project: https://www.balena.io/open/
 
+#### OpenBalena supported devices: Raspberry Pi family, the Intel NUC, the NVIDIA Jetson TX2, and the balenaFin
 
 ## Install OpenBalena + OpenBalena Dashboard
 
-#### OpenBalena supported devices: Raspberry Pi family, the Intel NUC, the NVIDIA Jetson TX2, and the balenaFin
-
-!! To access boxes via SSH, you need to add a public SSH key to the project immediately after creating the project. So that all newly created boxes have this key in their config !!
-
-
-Create subdomains openbalena.mydomain.com, *.openbalena.mydomain.com and configure on server IP
+#### Create subdomains openbalena.mydomain.com, *.openbalena.mydomain.com and configure on server IP
 
 **1. Install and run OpenBalena using this manual:** https://www.balena.io/open/docs/getting-started/.
 Set Docker CE to restart automatically and edit config/docker-compose.yml, add:
@@ -39,7 +35,10 @@ services:
 
 **4. Run /bin/bash ssh_gen.sh to generate SSH keys to connect to boxes**
 
-## Build Setup
+!! To access boxes via SSH, you need to add a public SSH key to the project immediately after creating the project. So that all newly created boxes have this key in their config !!
+
+
+## Run application
 
 1. Copy .env.example to .env and chane config vars
 
