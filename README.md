@@ -86,8 +86,10 @@ export OPENBALENA_S3_SECRET_KEY=aws_secret_key
 
 ### Way 1
 
-        balena tunnel {uuid} -p 22222:22222
-        ssh root@localhost -p 22222
+```
+balena tunnel {uuid} -p 22222:22222
+ssh root@localhost -p 22222
+```
 
 you need to specify a private key for root@localhost !!!
 by default, the private key is located here: api/devices (the result of running /bin/bash ssh_gen.sh)
